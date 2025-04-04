@@ -7,7 +7,7 @@
 
 XCOMS AI is a modern landing page for an AI-powered robo-caller platform designed to revolutionize sales and recruiting calls. Built with Next.js, TypeScript, and Tailwind CSS, it features a responsive design with dark mode support and smooth animations.
 
-![XCOMS AI Preview](public/preview.png)
+![XCOMS AI Preview](/public/screenshots/xcoms-landing-page.png)
 
 ## Features
 
@@ -55,12 +55,14 @@ src/
 ## Development
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/magnusquest/xcoms-ai.git
    cd xcoms-ai
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```

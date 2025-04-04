@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  basePath: '/xcoms-ai',
   images: {
-    unoptimized: true,
+    domains: ['placehold.co'],
   },
 }
 
