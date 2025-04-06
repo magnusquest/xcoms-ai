@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { Header } from '@/components/organisms/Header';
+import { Header } from '@/components/molecules/Header';
+import { Footer } from '@/components/molecules/Footer';
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -28,9 +29,10 @@ export default function RootLayout({
 	return (
 		<html lang="en" className="scroll-smooth">
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900 text-gray-900 dark:text-gray-100`}>
+				className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100`}>
 				<Header />
-				{children}
+				<div className="min-h-screen">{children}</div>
+				<Footer />
 			</body>
 		</html>
 	);

@@ -5,7 +5,7 @@ import { siteConfig } from '@/lib/constants/site';
 
 export function Footer() {
 	return (
-		<footer className="bg-gray-50 dark:bg-gray-900 py-12">
+		<footer id="contact" className="bg-gray-50 dark:bg-gray-900 py-12">
 			<div className="container mx-auto px-4">
 				<div className="grid grid-cols-1 md:grid-cols-4 gap-8">
 					<div className="col-span-1 md:col-span-2">
@@ -49,43 +49,26 @@ export function Footer() {
 					</div>
 
 					<div>
-						<h3 className="font-bold mb-4">Product</h3>
+						<h3 className="font-bold mb-4">Contact</h3>
 						<ul className="space-y-2">
 							<li>
-								<Link href="#features" className="text-gray-600 dark:text-gray-300 hover:text-primary">
-									Features
-								</Link>
+								<a href="mailto:hello@xcoms.ai" className="text-gray-600 dark:text-gray-300 hover:text-primary">
+									hello@xcoms.ai
+								</a>
 							</li>
 							<li>
-								<Link href="#pricing" className="text-gray-600 dark:text-gray-300 hover:text-primary">
-									Pricing
-								</Link>
+								<a href="tel:+1 (555) 123-4567" className="text-gray-600 dark:text-gray-300 hover:text-primary">
+									+1 (555) 123-4567
+								</a>
 							</li>
 							<li>
-								<Link href="#reviews" className="text-gray-600 dark:text-gray-300 hover:text-primary">
-									Reviews
-								</Link>
-							</li>
-						</ul>
-					</div>
-
-					<div>
-						<h3 className="font-bold mb-4">Company</h3>
-						<ul className="space-y-2">
-							<li>
-								<Link href="/about" className="text-gray-600 dark:text-gray-300 hover:text-primary">
-									About
-								</Link>
-							</li>
-							<li>
-								<Link href="/blog" className="text-gray-600 dark:text-gray-300 hover:text-primary">
-									Blog
-								</Link>
-							</li>
-							<li>
-								<Link href="/careers" className="text-gray-600 dark:text-gray-300 hover:text-primary">
-									Careers
-								</Link>
+								<a
+									href="https://www.google.com/maps/search/?api=1&query=123+Main+St,+Anytown,+CA+12345"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="text-gray-600 dark:text-gray-300 hover:text-primary">
+									123 Main St, Anytown, CA 12345
+								</a>
 							</li>
 						</ul>
 					</div>

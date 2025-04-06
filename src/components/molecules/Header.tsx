@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/atoms/Button';
 import { siteConfig } from '@/lib/constants/site';
 
@@ -10,7 +11,11 @@ export function Header() {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const { scrollY } = useScroll();
 
-	const headerBackground = useTransform(scrollY, [0, 50], ['hsla(var(--background), 0)', 'hsla(var(--background), 0.9)']);
+	const headerBackground = useTransform(
+		scrollY,
+		[0, 50],
+		['hsla(var(--background), 0)', 'hsla(var(--background), 0.9)']
+	);
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -30,11 +35,25 @@ export function Header() {
 			}}>
 			<div className="container mx-auto px-4">
 				<div className="flex h-16 items-center justify-between">
-					<Link href="/" className="text-2xl font-bold tracking-tighter transition-colors">
-						{siteConfig.name}
+					<Link href="/#home" className="relative h-full w-32 transition-opacity hover:opacity-90">
+						<Image
+							src="/logos/logo_black_no_bg.png"
+							alt={siteConfig.name}
+							fill
+							className="object-cover dark:hidden w-full h-full"
+							style={{ aspectRatio: '1/2' }}
+							priority
+						/>
+						<Image
+							src="/logos/logo_white_no_bg.png"
+							alt={siteConfig.name}
+							fill
+							className="object-cover hidden dark:block w-full h-full"
+							priority
+						/>
 					</Link>
 
-					<nav className="hidden md:flex space-x-8">
+					<nav className="hidden md:flex items-center space-x-8">
 						{siteConfig.nav.map((item) => (
 							<Link
 								key={item.href}
@@ -46,10 +65,14 @@ export function Header() {
 					</nav>
 
 					<div className="flex items-center space-x-4">
-						<Button variant="ghost" size="sm">
-							Log in
-						</Button>
-						<Button size="sm">Get Started</Button>
+						<Link href="/login">
+							<Button variant="ghost" size="sm">
+								Log in
+							</Button>
+						</Link>
+						<Link href="/sign-up">
+							<Button size="sm">Get Started</Button>
+						</Link>
 					</div>
 				</div>
 			</div>

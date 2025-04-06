@@ -1,17 +1,5 @@
-import { Hero } from '@/components/organisms/Hero';
-import { Pricing } from '@/components/organisms/Pricing';
-import { Reviews } from '@/components/organisms/Reviews';
-import { Footer } from '@/components/organisms/Footer';
+import { HomePage } from '@/components/organisms/HomePage';
 
 export default function Home() {
-	return (
-		<div className="relative">
-			<main>
-				<Hero />
-				<Pricing />
-				<Reviews />
-			</main>
-			<Footer />
-		</div>
-	);
+	return <HomePage />;
 }
