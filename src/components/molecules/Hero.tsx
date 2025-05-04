@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
 	motion,
 	useMotionValue,
@@ -21,6 +21,11 @@ function WaveCube({
 	col: number;
 	time: MotionValue<number>;
 }) {
+	const [mounted, setMounted] = useState(false);
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+
 	const x = (col - 14) * 28 - 200;
 	const z = (row - 7) * 28 - 200;
 	const source1 = { x: -196, z: 0 };
@@ -35,18 +40,14 @@ function WaveCube({
 		time,
 		(t) => 18 * (Math.sin(k * d1 - omega * t) + Math.sin(k * d2 - omega * t))
 	);
-	const opacity = useTransform(
-		time,
-		(t) =>
-			0.5 +
-			(0.5 *
-				Math.abs(Math.sin(k * d1 - omega * t) + Math.sin(k * d2 - omega * t))) /
-				2
-	);
+
+	const opacity = 0.2;
+
+	if (!mounted) return null; // Prevent SSR mismatch
 
 	return (
 		<motion.div
-			className="absolute bg-gradient-to-r from-blue-600 to-purple-600 w-3 h-3 rounded shadow-lg"
+			className="absolute bg-gradient-to-r from-blue-600 to-purple-600 w-7 h-8 rounded-full shadow-lg"
 			style={{
 				left: `calc(50% + ${x}px)`,
 				top: `calc(50% + ${z}px)`,
@@ -55,6 +56,43 @@ function WaveCube({
 				opacity
 			}}
 		/>
+	);
+}
+function WaveCubeMatrix({
+	rows = 22,
+	cols = 27,
+	time
+}: {
+	rows?: number;
+	cols?: number;
+	time: MotionValue<number>;
+}) {
+	// Tilt the matrix by rotating the parent
+	return (
+		<>
+			{" "}
+			<motion.div
+				className="absolute inset-0 flex items-center justify-center"
+				style={{ perspective: 1000 }}></motion.div>
+			<motion.div
+				className="relative w-full h-full"
+				initial={{ rotateX: 30, rotateZ: -20 }}
+				animate={{ rotateX: 30, rotateZ: -20 }}
+				style={{ transformStyle: "preserve-3d" }}>
+				{Array.from({ length: rows }).map((_, row) => (
+					<React.Fragment key={`row-${row}`}>
+						{Array.from({ length: cols }).map((_, col) => (
+							<WaveCube
+								key={`cube-${row}-${col}`}
+								row={row * 3}
+								col={col * 3}
+								time={time}
+							/>
+						))}
+					</React.Fragment>
+				))}
+			</motion.div>
+		</>
 	);
 }
 
@@ -67,23 +105,8 @@ export function Hero() {
 		<section
 			id="home"
 			className="relative w-screen h-screen flex items-center justify-center overflow-hidden">
-			<div className="absolute inset-0">
-				<motion.div
-					className="absolute inset-0 flex items-center justify-center"
-					style={{ perspective: 1000 }}>
-					<div className="absolute w-full h-full">
-						{Array.from({ length: 16 }).flatMap((_, row) =>
-							Array.from({ length: 16 }).map((_, col) => (
-								<WaveCube
-									key={`cube-${row}-${col}`}
-									row={row * 3}
-									col={col * 3}
-									time={time}
-								/>
-							))
-						)}
-					</div>
-				</motion.div>
+			<div className="absolute inset-0 -translate-x-[30%] -translate-y-64">
+				<WaveCubeMatrix time={time} />
 			</div>
 			<div className="container mx-auto px-4 relative z-10">
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto h-full">
