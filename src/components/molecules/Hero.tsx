@@ -1,23 +1,25 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { Button } from '@/components/atoms/Button';
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Button } from "@/components/atoms/Button";
 
 export function Hero() {
 	return (
-		<section id="home" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+		<section
+			id="home"
+			className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
 			{/* Animated background gradient */}
 			<motion.div
 				className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-10"
 				animate={{
 					scale: [1, 1.2, 1],
-					rotate: [0, 90, 0],
+					rotate: [0, 90, 0]
 				}}
 				transition={{
 					duration: 20,
 					repeat: Infinity,
-					ease: 'linear',
+					ease: "linear"
 				}}
 			/>
 
@@ -36,8 +38,9 @@ export function Hero() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.2 }}>
-							Unlock powerful lead generation with AI-driven calls, texts, and emails. Transform your outreach into
-							meaningful connections and drive results with confidence.
+							Unlock powerful lead generation with AI-driven calls, texts, and
+							emails. Transform your outreach into meaningful connections and
+							drive results with confidence.
 						</motion.p>
 						<motion.div
 							className="flex md:justify-start justify-center"
@@ -56,7 +59,7 @@ export function Hero() {
 						transition={{ duration: 0.5, delay: 0.6 }}>
 						<iframe
 							className="w-full h-full"
-							src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+							src="https://www.youtube.com/watch?v=v-EYzZCLF48&ab_channel=ElevenLabs"
 							title="Product Demo"
 							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 							allowFullScreen
