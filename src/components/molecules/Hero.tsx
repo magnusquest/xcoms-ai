@@ -58,12 +58,10 @@ export function Hero() {
 						animate={{ opacity: 1, x: 0 }}
 						transition={{ duration: 0.5, delay: 0.6 }}>
 						<iframe
-							className="w-full h-full"
-							src="https://www.youtube.com/watch?v=v-EYzZCLF48&ab_channel=ElevenLabs"
-							title="Product Demo"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-							allowFullScreen
-						/>
+							width="560"
+							height="315"
+							src="https://www.youtube.com/embed/v-EYzZCLF48"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
 					</motion.div>
 				</div>
 			</div>
